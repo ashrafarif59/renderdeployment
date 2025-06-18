@@ -74,7 +74,11 @@ app.get('/payment-result', (req, res) => {
     <body>
       <h2>Processing your payment...</h2>
       <p>You'll be redirected to the app shortly.</p>
-      
+      <script>
+        setTimeout(function() {
+          window.location.href = "alrossaisparking://alrossaisparking.com/test?status=${status}&ref=${merchant_reference}";
+        }, 8000);
+      </script>
     </body>
     </html>
   `;
