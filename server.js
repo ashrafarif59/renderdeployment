@@ -55,11 +55,11 @@ app.get('/generate-form', (req, res) => {
   res.send(html);
 });
 
-app.get('/payment-result', (req, res) => {
-  const { response_code, merchant_reference } = req.query;
+app.get('/payment-result', () => {
+  //const { response_code, merchant_reference } = req.query;
 
   // Determine payment status
-  const status = response_code === '14000' ? 'success' : 'failed';
+  //const status = response_code === '14000' ? 'success' : 'failed';
 
   const html = `
     <!DOCTYPE html>
