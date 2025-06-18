@@ -55,5 +55,36 @@ app.get('/generate-form', (req, res) => {
   res.send(html);
 });
 
+app.get('/payment-result', (req, res) => {
+  const { response_code, merchant_reference } = req.query;
+
+  // Determine payment status
+  const status = response_code === '14000' ? 'success' : 'failed';
+
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Processing Payment</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 80px; }
+      </style>
+    </head>
+    <body>
+      <h2>Processing your payment...</h2>
+      <p>You'll be redirected to the app shortly.</p>
+      <script>
+        setTimeout(function() {
+          window.location.href = "myapp://payment-result?status=${status}&ref=${merchant_reference}";
+        }, 8000);
+      </script>
+    </body>
+    </html>
+  `;
+
+  res.send(html);
+});
+
 const PORT = process.env.PORT || 3022;
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
