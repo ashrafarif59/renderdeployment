@@ -22,8 +22,8 @@ function generateSignature(data) {
   return crypto.createHash('sha256').update(baseString).digest('hex');
 }
 
-app.post('/generate-form', (req, res) => {
-  const { amount, email, reference } = req.body;
+app.get('/generate-form', (req, res) => {
+  const { amount, email, reference } = req.query;
 
   const fields = {
     access_code,
