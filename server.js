@@ -14,7 +14,7 @@ const merchant_identifier = "c48d8628";
 const sha_request_phrase = "Pass1Pass!"; // no spaces
 //const return_url = "alrossaisparking://alrossaisparking.com/test";
 //const encodedReturnUrl = encodeURIComponent(return_url);
-const return_url="https://google.com";
+const return_url="https://renderdeployment-x8gt.onrender.com/payment-result";
 
 function generateSignature(data) {
   const sortedKeys = Object.keys(data).sort();
