@@ -35,7 +35,7 @@ app.get('/generate-form', (req, res) => {
     language: 'en',
     merchant_identifier,
     merchant_reference: reference,
-    encodedReturnUrl
+    return_url :encodedReturnUrl
   };
 
   fields.signature = generateSignature(fields);
