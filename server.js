@@ -12,7 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 const access_code = "FqpiNanbQE2OJTBqHiPx";
 const merchant_identifier = "c48d8628";
 const sha_request_phrase = "Pass1Pass!"; // no spaces
-const return_url = "alrossaisparking://alrossaisparking.com/test"; // Or deep link
+const return_url = "alrossaisparking://alrossaisparking.com/test";
+const encodedReturnUrl = encodeURIComponent(return_url);
 
 function generateSignature(data) {
   const sortedKeys = Object.keys(data).sort();
@@ -34,7 +35,7 @@ app.get('/generate-form', (req, res) => {
     language: 'en',
     merchant_identifier,
     merchant_reference: reference,
-    return_url
+    encodedReturnUrl
   };
 
   fields.signature = generateSignature(fields);
